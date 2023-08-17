@@ -6,6 +6,6 @@ cd mingpt/minGPT
 pip install -e .
 ```
 ### Demo
-```
-./mingpt/minGPT_pipeline.ipynb
-```
+
+The demo notebook is ```./mingpt/minGPT_pipeline.ipynb```
+
