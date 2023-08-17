@@ -7,9 +7,9 @@ cd mingpt/minGPT
 pip install -e .
 ```
 ### Dataset
-Data used for training is stored in .csv file with two columns (sep = "\t")
-- column1: mol_smiles
-- column2: conductivity ("1" is high conductivity, "0" is low conductivity)
+Data used for training is stored in .csv file with two columns, the separation marker is ```"\t"```
+- 1st column: "mol_smiles" (SMILES code for the monomer)
+- 2nd column: "conductivity" ("1" is high conductivity, "0" is low conductivity)
 ### Demo
 The demo notebook is ```./mingpt/minGPT_pipeline.ipynb```
 
