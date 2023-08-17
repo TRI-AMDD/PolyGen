@@ -2,6 +2,6 @@
 
 ### Installation
 ```
-cd minGPT
+cd mingpt/minGPT
 pip install -e .
 ```
