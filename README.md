@@ -1,4 +1,5 @@
 # Generative AIs for generative polymer electrolytes with high conductivities
+![Generated polymer electrolyte](https://github.com/TRI-AMDD/PolyGen/blob/main/molecule_grid.png)
 
 ### Installation
 ```
