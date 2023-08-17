@@ -7,7 +7,7 @@ cd mingpt/minGPT
 pip install -e .
 ```
 ### Demo
-The demo notebook is ```./mingpt/minGPT_pipeline.ipynb```
+The demo notebook is ```./mingpt/minGPT_pipeline.ipynb```<br>
 Steps: 
 - data preprocessing
 - build the model
