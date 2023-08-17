@@ -2,6 +2,7 @@
 ![Generated polymer electrolyte](https://github.com/TRI-AMDD/PolyGen/blob/main/molecule_grid.png)
 
 ### Installation
+Python version: 3.8
 ```
 cd mingpt/minGPT
 pip install -e .
