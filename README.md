@@ -1,4 +1,4 @@
-# Generative AIs for generative polymer electrolytes with high conductivities
+# De novo designs of polymer electrolytes with high conductivities using Generative AIs
 ![Generated polymer electrolyte](https://github.com/TRI-AMDD/PolyGen/blob/main/molecule_grid.png)
 
 ### Installation
