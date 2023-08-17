@@ -22,6 +22,6 @@ The demo notebook is ```./mingpt/minGPT_pipeline.ipynb```
 
 ### Parameters:
 - data preprocessing:
--- input_col = "mol_smiles"
+  - input_col = "mol_smiles"
 
 
