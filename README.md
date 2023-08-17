@@ -6,12 +6,20 @@
 cd mingpt/minGPT
 pip install -e .
 ```
+### Dataset
+Data used for training is stored in .csv file with two columns (sep = "\t")
+- column1: mol_smiles
+- column2: conductivity ("1" is high conductivity, "0" is low conductivity)
 ### Demo
-The demo notebook is ```./mingpt/minGPT_pipeline.ipynb```<br>
-Steps: 
+The demo notebook is ```./mingpt/minGPT_pipeline.ipynb```
+
+### Steps: 
 - data preprocessing
 - build the model
 - train the model
 - generate candidates
 - evaluation
+
+### Parameters:
+- data preprocessing: 
 
