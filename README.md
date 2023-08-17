@@ -8,7 +8,10 @@ pip install -e .
 ```
 ### Demo
 The demo notebook is ```./mingpt/minGPT_pipeline.ipynb```
-
-### Steps 
+Steps: 
 - data preprocessing
+- build the model
+- train the model
+- generate candidates
+- evaluation
 
