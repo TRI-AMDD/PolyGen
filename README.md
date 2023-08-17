@@ -47,13 +47,9 @@ The demo notebook is ```./mingpt/minGPT_pipeline.ipynb```
   - call_back (default=None): callback function.
   - pretrain (default=None):  path to the checkpoint of pretrained model.
 - generate candidates (generate_config):
-  - model_type (default='gpt-nano'): type of model architecture, available pretrained options ('gpt2', 'gpt-mini', 'gpt-nano').
-  - n_layer, n_head, n_embd: will auto-fill based on the model type.
-  - vocab_size (default=591): size of vocabulary, obtained based on tokenizer. 
-  - block_size (default=64): same as data preprocessing.
-  - embd_pdrop (default=0.1): dropout prob for embedding.
-  - resid_pdrop (default=0.1): dropout prob for residual layer.
-  - attn_pdrop (default=0.1): dropout prob for attention layer.   
-
+  - ckpts_path (default=None): path to the model checkpoint used for generation.
+  - num_samples (default=100): number of samples that will be generated.
+  - temperature (default=1.0): tempature for generation (higher leads to higher diversity and lower validity).
+  - task (default="conditional"): "unconditional" for unconditional generation.
 
 
