@@ -22,6 +22,8 @@ The demo notebook is ```./mingpt/minGPT_pipeline.ipynb```
 
 ### Parameters:
 - data preprocessing:
-  - input_col = "mol_smiles"
+  - length (default=5): length of input labels, for conditional case, it is set to 5 (conductivity label). For unconditional case, it is set to 1 (random number).
+  - block_size (default=64): the max length of the whole sequence.
+  - train_test_split (default=(0.8, 0.2)): the ratio of train and test set.  
 
 
