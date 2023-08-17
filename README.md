@@ -21,7 +21,7 @@ The demo notebook is ```./mingpt/minGPT_pipeline.ipynb```
 - generate candidates
 - evaluation
 
-### Parameters:
+### Configurations:
 - data preprocessing (data_config):
   - length (default=5): length of input labels, for conditional case, it is set to 5 (conductivity label). For unconditional case, it is set to 1 (random number).
   - block_size (default=64): the max length of the whole sequence.
@@ -52,5 +52,7 @@ The demo notebook is ```./mingpt/minGPT_pipeline.ipynb```
   - num_samples (default=100): number of samples that will be generated.
   - temperature (default=1.0): tempature for generation (higher leads to higher diversity and lower validity).
   - task (default="conditional"): "unconditional" for unconditional generation.
+- evaluation (no config): 6 metrics: novelty, uniqueness, validity, synthesizability, diversity and similarity. 
+  
 
 
