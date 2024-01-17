@@ -128,7 +128,7 @@ class minGPT():
     def generate(self, generate_config):
         self.num_samples = generate_config.num_samples
         if generate_config.ckpt_path:
-            ckpt = torch.load(generate_config.ckpt_path, map_location=torch.device('cpu'))
+            ckpt = torch.load(generate_config.ckpt_path)#, map_location=torch.device('cpu'))
             self.model.load_state_dict(ckpt)
         
         self.model.to(self.device)
