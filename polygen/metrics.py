@@ -108,7 +108,7 @@ def readFragmentScores(name='fpscores'):
     # generate the full path filename:
     if name == "fpscores":
         
-        data = pickle.load(gzip.open("./fpscores.pkl.gz"))
+        data = pickle.load(gzip.open("./polygen/fpscores.pkl.gz"))
     outDict = {}
     for i in data:
         for j in range(1, len(i)):

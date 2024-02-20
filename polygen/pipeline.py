@@ -1,19 +1,16 @@
+import os
 import pandas as pd
 import numpy as np
-import random
 import torch
-from torch.nn.utils.rnn import pad_sequence
-from torch.utils.data import Dataset
 from rdkit import Chem
-import sys
+
 from deepchem.feat.smiles_tokenizer import SmilesTokenizer
-from mingpt.metrics import *
-from mingpt.dataset import *
 from mingpt.model import GPT
 from mingpt.utils import CfgNode as CN
 from sklearn.model_selection import train_test_split
-from mingpt.trainer_custom import Trainer
-
+from polygen.trainer_custom import Trainer
+from polygen.metrics import *
+from polygen.dataset import *
 
 class minGPT():
     
@@ -95,7 +92,7 @@ class minGPT():
 
     
     def data_preprocessing(self, data_config):
-        self.tokenizer = SmilesTokenizer(vocab_file="vocab.txt")
+        self.tokenizer = SmilesTokenizer(vocab_file=os.path.join(os.path.dirname(__file__), "vocab.txt"))
         self.df = pd.read_csv(data_config.file_path, sep="\t") 
         self.data_num = len(self.df)
         self.length = data_config.length
@@ -131,7 +128,7 @@ class minGPT():
     def generate(self, generate_config):
         self.num_samples = generate_config.num_samples
         if generate_config.ckpt_path:
-            ckpt = torch.load(generate_config.ckpt_path)
+            ckpt = torch.load(generate_config.ckpt_path)#, map_location=torch.device('cpu'))
             self.model.load_state_dict(ckpt)
         
         self.model.to(self.device)
