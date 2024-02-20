@@ -59,5 +59,21 @@ The demo notebook is ```minGPT_pipeline.ipynb```
   - task (default="conditional"): "unconditional" for unconditional generation.
 - evaluation (no config): 6 metrics: novelty, uniqueness, validity, synthesizability, diversity and similarity. 
   
+### Citation
+If you use PolyGen, please cite the following:
 
+```
+@article{lei2023self,
+  title={A self-improvable Polymer Discovery Framework Based on Conditional Generative Model},
+  author={Lei, Xiangyun and Ye, Weike and Yang, Zhenze and Schweigert, Daniel and Kwon, Ha-Kyung and Khajeh, Arash},
+  journal={arXiv preprint arXiv:2312.04013},
+  year={2023}
+}
 
+@article{yang2023novo,
+  title={De novo design of polymer electrolytes with high conductivity using gpt-based and diffusion-based generative models},
+  author={Yang, Zhenze and Ye, Weike and Lei, Xiangyun and Schweigert, Daniel and Kwon, Ha-Kyung and Khajeh, Arash},
+  journal={arXiv preprint arXiv:2312.06470},
+  year={2023}
+}
+```
