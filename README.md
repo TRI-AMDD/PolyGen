@@ -55,7 +55,7 @@ The demo notebook is ```minGPT_pipeline.ipynb```
 - generate candidates (generate_config):
   - ckpts_path (default=None): path to the model checkpoint used for generation.
   - num_samples (default=100): number of samples that will be generated.
-  - temperature (default=1.0): tempature for generation (higher leads to higher diversity and lower validity).
+  - temperature (default=1.0): temperature for generation (higher leads to higher diversity and lower validity).
   - task (default="conditional"): "unconditional" for unconditional generation.
 - evaluation (no config): 6 metrics: novelty, uniqueness, validity, synthesizability, diversity and similarity. 
   
