@@ -13,6 +13,17 @@ pip install -e .
 
 pip install rdkit, deepchem
 ```
+#### diffusion1D
+Python version: 3.8
+
+Install the required packages minGPT, rdkit, and deepchem:
+```
+git clone https://github.com/karpathy/minGPT.git
+cd minGPT
+pip install -e .
+
+pip install rdkit, deepchem
+```
 ### Dataset
 Prepare the data used for training in .csv file with two columns, the separation marker is ```"\t"```
 - 1st column: "mol_smiles" (SMILES code for the monomer)
