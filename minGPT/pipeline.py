@@ -8,9 +8,9 @@ from deepchem.feat.smiles_tokenizer import SmilesTokenizer
 from mingpt.model import GPT
 from mingpt.utils import CfgNode as CN
 from sklearn.model_selection import train_test_split
-from polygen.trainer_custom import Trainer
-from polygen.metrics import *
-from polygen.dataset import *
+from minGPT.trainer_custom import Trainer
+from minGPT.metrics import *
+from minGPT.dataset import *
 
 class minGPT():
     
