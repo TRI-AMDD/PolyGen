@@ -11,7 +11,7 @@ git clone https://github.com/karpathy/minGPT.git minGPT/model
 cd minGPT/model
 pip install -e .
 
-pip install rdkit, deepchem
+pip install rdkit deepchem transformers
 ```
 #### diffusion1D
 Python version: 3.8
@@ -19,7 +19,7 @@ Python version: 3.8
 Install the required packages minGPT, rdkit, and deepchem:
 ```
 
-pip install rdkit deepchem
+pip install rdkit deepchem 
 ```
 ### Dataset
 Prepare the data used for training in .csv file with two columns, the separation marker is ```"\t"```
