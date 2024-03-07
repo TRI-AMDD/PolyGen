@@ -38,7 +38,7 @@ The demos are shown in ```minGPT_pipeline.ipynb```, ```diffusion1D_pipeline.ipyn
 - generate candidates
 - evaluation
 
-### Configurations:
+<!-- ### Configurations:
 - data preprocessing (data_config):
   - length (default=5): length of input labels, for conditional case, it is set to 5 (conductivity label). For unconditional case, it is set to 1 (random number).
   - block_size (default=64): the max length of the whole sequence.
@@ -69,7 +69,7 @@ The demos are shown in ```minGPT_pipeline.ipynb```, ```diffusion1D_pipeline.ipyn
   - num_samples (default=100): number of samples that will be generated.
   - temperature (default=1.0): temperature for generation (higher leads to higher diversity and lower validity).
   - task (default="conditional"): "unconditional" for unconditional generation.
-- evaluation (no config): 6 metrics: novelty, uniqueness, validity, synthesizability, diversity and similarity. 
+- evaluation (no config): 6 metrics: novelty, uniqueness, validity, synthesizability, diversity and similarity. -->
   
 ### Citation
 If you use PolyGen, please cite the following:
