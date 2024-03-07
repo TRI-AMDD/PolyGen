@@ -22,6 +22,8 @@ pip install rdkit deepchem transformers
 cd diffusion1D/model
 pip install -e .
 ```
+The checkpoints of pretrained model at different epochs can be obtained here: [link to checkpoints]. Please put the checkpoints files under diffusion1D/ckpts/. 
+
 ### Dataset
 Prepare the data used for training in .csv file with two columns, the separation marker is ```"\t"```
 - 1st column: "mol_smiles" (SMILES code for the monomer)
