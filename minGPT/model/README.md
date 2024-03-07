@@ -1,4 +1,4 @@
-
+[Adapted from https://github.com/karpathy/minGPT.git]
 # minGPT
 
 ![mingpt](mingpt.jpg)
