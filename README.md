@@ -27,7 +27,7 @@ Prepare the data used for training in .csv file with two columns, the separation
 - 1st column: "mol_smiles" (SMILES code for the monomer)
 - 2nd column: "conductivity" ("1" is high conductivity, "0" is low conductivity)
 ### Demo
-The demo notebook is ```minGPT_pipeline.ipynb```
+The demos are shown in ```minGPT_pipeline.ipynb```, ```diffusion1D_pipeline.ipynb```
 
 ### Steps: 
 - data preprocessing
