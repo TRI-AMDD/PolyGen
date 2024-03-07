@@ -7,11 +7,11 @@ Python version: 3.8
 
 Install the required packages minGPT, rdkit, and deepchem:
 ```
+pip install rdkit deepchem transformers
+
 git clone https://github.com/karpathy/minGPT.git minGPT/model
 cd minGPT/model
 pip install -e .
-
-pip install rdkit deepchem transformers
 ```
 #### diffusion1D
 Python version: 3.8
