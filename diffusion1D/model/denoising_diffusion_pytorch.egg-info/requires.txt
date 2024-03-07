@@ -1,0 +1,12 @@
+accelerate
+einops
+ema-pytorch>=0.4.2
+numpy
+pillow
+pandas
+matplotlib
+ipython
+pytorch-fid
+torch
+torchvision
+tqdm

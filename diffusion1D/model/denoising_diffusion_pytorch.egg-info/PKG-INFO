@@ -1,0 +1,27 @@
+Metadata-Version: 2.1
+Name: denoising-diffusion-pytorch
+Version: 1.6.4
+Summary: Denoising Diffusion Probabilistic Models - Pytorch
+Home-page: https://github.com/lucidrains/denoising-diffusion-pytorch
+Author: Phil Wang
+Author-email: lucidrains@gmail.com
+License: MIT
+Keywords: artificial intelligence,generative models
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.6
+Description-Content-Type: text/markdown
+Requires-Dist: accelerate
+Requires-Dist: einops
+Requires-Dist: ema-pytorch>=0.4.2
+Requires-Dist: numpy
+Requires-Dist: pillow
+Requires-Dist: pandas
+Requires-Dist: matplotlib
+Requires-Dist: ipython
+Requires-Dist: pytorch-fid
+Requires-Dist: torch
+Requires-Dist: torchvision
+Requires-Dist: tqdm
