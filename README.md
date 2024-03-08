@@ -121,7 +121,10 @@ For diffusionLM, the first two steps are skipped as they are wrapped up already.
 The github repositories that are referenced for this code include:
 
 ```
+https://github.com/karpathy/minGPT
+https://github.com/lucidrains/denoising-diffusion-pytorch
 https://github.com/XiangLi1999/Diffusion-LM
+
 ```
 ## Citation
 If you use PolyGen, please cite the following:
