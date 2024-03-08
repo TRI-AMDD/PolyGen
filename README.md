@@ -38,9 +38,14 @@ pip install huggingface_hub==0.16.4
 pip install wandb deepchem torchsummary
 ```
 ### Dataset
+#### minGPT & diffusion1D
 Prepare the data used for training in .csv file with two columns, the separation marker is ```"\t"```
 - 1st column: "mol_smiles" (SMILES code for the monomer)
 - 2nd column: "conductivity" ("1" is high conductivity, "0" is low conductivity)
+
+#### diffusionLM
+The datasets are stored in .json format, please check the ```diffusionLM/datasets``` for examples. 
+
 ### Demo
 The demos are shown in ```minGPT_pipeline.ipynb```, ```diffusion1D_pipeline.ipynb```
 
