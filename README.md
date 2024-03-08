@@ -35,7 +35,7 @@ pip install -e diffusionLM/transformers/
 pip install spacy==3.2.6
 pip install datasets==2.0.0 
 pip install huggingface_hub==0.16.4
- wandb deepchem torchsummary
+pip install wandb deepchem torchsummary
 ```
 ### Dataset
 Prepare the data used for training in .csv file with two columns, the separation marker is ```"\t"```
@@ -45,11 +45,13 @@ Prepare the data used for training in .csv file with two columns, the separation
 The demos are shown in ```minGPT_pipeline.ipynb```, ```diffusion1D_pipeline.ipynb```
 
 ### Steps: 
-- data preprocessing
+- data preprocessing 
 - build the model
 - train the model
 - generate candidates
 - evaluation
+
+For diffusionLM, the first two steps are wrapped up.
 
 <!-- ### Configurations:
 - data preprocessing (data_config):
