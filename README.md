@@ -116,8 +116,14 @@ For diffusionLM, the first two steps are skipped as they are wrapped up already.
   - temperature (default=1.0): temperature for generation (higher leads to higher diversity and lower validity).
   - task (default="conditional"): "unconditional" for unconditional generation.
 - evaluation (no config): 6 metrics: novelty, uniqueness, validity, synthesizability, diversity and similarity. -->
-  
-### Citation
+
+## Reference
+The github repositories that are referenced for this code include:
+
+```
+https://github.com/XiangLi1999/Diffusion-LM
+```
+## Citation
 If you use PolyGen, please cite the following:
 
 ```
