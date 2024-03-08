@@ -82,7 +82,7 @@ The checkpoints of pretrained model at different epochs can be obtained here:htt
 The checkpoints of pretrained model at different epochs can be obtained here: https://drive.google.com/drive/folders/1ZJqPNkrWhRFkrXDZ85G-4xKUsxjildlH?usp=sharing. Please put the checkpoints files under ```diffusion1D/ckpts/```. 
 
 ### diffusionLM
-For diffusionLM, the first two steps are skipped as they are wrapped up already.
+The checkpoints of pretrained model at different epochs can be obtained here: https://drive.google.com/drive/folders/1ZJqPNkrWhRFkrXDZ85G-4xKUsxjildlH?usp=sharing. Please put the whole checkpoints folder and files under ```diffusionLM/improved-diffusion/diffusion_models/```. 
 
 <!-- ### Configurations:
 - data preprocessing (data_config):
