@@ -22,7 +22,7 @@ pip install rdkit deepchem transformers
 cd diffusion1D/model
 pip install -e .
 ```
-The checkpoints of pretrained model at different epochs can be obtained here: https://drive.google.com/drive/folders/1ZJqPNkrWhRFkrXDZ85G-4xKUsxjildlH?usp=sharing. Please put the checkpoints files under ```diffusion1D/ckpts/```. 
+
 #### diffusionLM
 Python version: 3.8
 
@@ -44,18 +44,26 @@ Prepare the data used for training in .csv file with two columns, the separation
 - 2nd column: "conductivity" ("1" is high conductivity, "0" is low conductivity)
 
 #### diffusionLM
-The datasets are stored in .json format, please check the ```diffusionLM/datasets``` for examples. 
+- The datasets are stored in .json format, please check the ```diffusionLM/datasets``` for examples. 
 
 ### Demo
 The demos are shown in ```minGPT_pipeline.ipynb```, ```diffusion1D_pipeline.ipynb```, ```diffusionLM_pipeline.ipynb```
 
 ### Training, generation and evaluation pipeline
-- data preprocessing 
-- build the model
-- train the model
-- generate candidates
-- evaluation
+- data preprocessing (data_config) 
+- build the model (model_config)
+- train the model (train_config)
+- generate candidates (generate_config)
+- evaluation (6 metrics including validity, novelty, uniqueness, synthesizability, similarity and diversity)
 
+### Pretrained models
+#### minGPT
+The checkpoints of pretrained model at different epochs can be obtained here: https://drive.google.com/drive/folders/1ZJqPNkrWhRFkrXDZ85G-4xKUsxjildlH?usp=sharing. Please put the checkpoints files under ```diffusion1D/ckpts/```. 
+
+#### diffusion1D
+The checkpoints of pretrained model at different epochs can be obtained here: https://drive.google.com/drive/folders/1ZJqPNkrWhRFkrXDZ85G-4xKUsxjildlH?usp=sharing. Please put the checkpoints files under ```diffusion1D/ckpts/```. 
+
+### diffusionLM
 For diffusionLM, the first two steps are skipped as they are wrapped up already.
 
 <!-- ### Configurations:
