@@ -47,16 +47,16 @@ Prepare the data used for training in .csv file with two columns, the separation
 The datasets are stored in .json format, please check the ```diffusionLM/datasets``` for examples. 
 
 ### Demo
-The demos are shown in ```minGPT_pipeline.ipynb```, ```diffusion1D_pipeline.ipynb```
+The demos are shown in ```minGPT_pipeline.ipynb```, ```diffusion1D_pipeline.ipynb```, ```diffusionLM_pipeline.ipynb```
 
-### Steps: 
+### Training, generation and evaluation pipeline
 - data preprocessing 
 - build the model
 - train the model
 - generate candidates
 - evaluation
 
-For diffusionLM, the first two steps are wrapped up.
+For diffusionLM, the first two steps are skipped as they are wrapped up already.
 
 <!-- ### Configurations:
 - data preprocessing (data_config):
