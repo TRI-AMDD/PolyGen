@@ -76,13 +76,13 @@ The generated output will be stored in ```diffusionLM/improved-diffusion/generat
 
 ## Pretrained models
 #### minGPT
-The checkpoints of pretrained model at different epochs can be obtained here:https://drive.google.com/drive/folders/1M1VjgUnFDospbmVSnr17JdUcUa-_4O79?usp=sharing. Please put the checkpoints files under ``minGPT/ckpts/```. 
+The checkpoints of pretrained model at different epochs can be obtained here:https://drive.google.com/drive/folders/1M1VjgUnFDospbmVSnr17JdUcUa-_4O79?usp=sharing. Please put the checkpoints files under ```minGPT/ckpts/```. 
 
 #### diffusion1D
 The checkpoints of pretrained model at different epochs can be obtained here: https://drive.google.com/drive/folders/1kFnKtnmuQLTNDZ7BJG2ZhoJKGWoXlI--?usp=sharing. Please put the checkpoints files under ```diffusion1D/ckpts/```. 
 
 ### diffusionLM
-The checkpoints of pretrained model at different epochs can be obtained here: https://drive.google.com/drive/folders/1ZJqPNkrWhRFkrXDZ85G-4xKUsxjildlH?usp=sharing. Please put the whole checkpoints folder and files under ```diffusionLM/improved-diffusion/diffusion_models/```. 
+The checkpoints of pretrained model at different epochs can be obtained here: https://drive.google.com/drive/folders/1ndLNhRZu8TL2Ni7VL8Q9GRAeX9fFVOq0?usp=sharing. Please put the whole checkpoints folder and files under ```diffusionLM/improved-diffusion/diffusion_models/```. 
 
 <!-- ### Configurations:
 - data preprocessing (data_config):
