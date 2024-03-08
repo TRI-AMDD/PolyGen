@@ -76,7 +76,7 @@ The generated output will be stored in ```diffusionLM/improved-diffusion/generat
 
 ## Pretrained models
 #### minGPT
-The checkpoints of pretrained model at different epochs can be obtained here: https://drive.google.com/drive/folders/1ZJqPNkrWhRFkrXDZ85G-4xKUsxjildlH?usp=sharing. Please put the checkpoints files under ```diffusion1D/ckpts/```. 
+The checkpoints of pretrained model at different epochs can be obtained here:https://drive.google.com/drive/folders/1M1VjgUnFDospbmVSnr17JdUcUa-_4O79?usp=sharing. Please put the checkpoints files under ``minGPT/ckpts/```. 
 
 #### diffusion1D
 The checkpoints of pretrained model at different epochs can be obtained here: https://drive.google.com/drive/folders/1ZJqPNkrWhRFkrXDZ85G-4xKUsxjildlH?usp=sharing. Please put the checkpoints files under ```diffusion1D/ckpts/```. 
