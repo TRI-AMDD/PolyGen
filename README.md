@@ -23,7 +23,20 @@ cd diffusion1D/model
 pip install -e .
 ```
 The checkpoints of pretrained model at different epochs can be obtained here: https://drive.google.com/drive/folders/1ZJqPNkrWhRFkrXDZ85G-4xKUsxjildlH?usp=sharing. Please put the checkpoints files under ```diffusion1D/ckpts/```. 
+#### diffusionLM
+Python version: 3.8
 
+Install the required packages diffusionLM, transformers (customized) and others:
+```
+pip install mpi4py
+pip install torch==1.12.1+cu113 torchvision==0.13.1+cu113 torchaudio==0.12.1 --extra-index-url https://download.pytorch.org/whl/cu113
+pip install -e diffusionLM/improved-diffusion/ 
+pip install -e diffusionLM/transformers/
+pip install spacy==3.2.6
+pip install datasets==2.0.0 
+pip install huggingface_hub wandb deepchem torchsummary
+
+```
 ### Dataset
 Prepare the data used for training in .csv file with two columns, the separation marker is ```"\t"```
 - 1st column: "mol_smiles" (SMILES code for the monomer)
