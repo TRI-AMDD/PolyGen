@@ -1,7 +1,7 @@
 # De novo designs of polymer electrolytes with high conductivities using Generative AIs
 ![Generated polymer electrolyte](https://github.com/TRI-AMDD/PolyGen/blob/main/molecule_grid.png)
 
-### Installation
+## Installation
 #### minGPT
 Python version: 3.8
 
@@ -37,7 +37,7 @@ pip install datasets==2.0.0
 pip install huggingface_hub==0.16.4
 pip install wandb deepchem torchsummary
 ```
-### Dataset
+## Dataset
 #### minGPT & diffusion1D
 Prepare the data used for training in .csv file with two columns, the separation marker is ```"\t"```
 - 1st column: "mol_smiles" (SMILES code for the monomer)
@@ -46,17 +46,33 @@ Prepare the data used for training in .csv file with two columns, the separation
 #### diffusionLM
 - The datasets are stored in .json format, please check the ```diffusionLM/datasets``` for examples. 
 
-### Demo
-The demos are shown in ```minGPT_pipeline.ipynb```, ```diffusion1D_pipeline.ipynb```, ```diffusionLM_pipeline.ipynb```
-
-### Training, generation and evaluation pipeline
+## Training, generation and evaluation pipeline
 - data preprocessing (data_config) 
 - build the model (model_config)
 - train the model (train_config)
 - generate candidates (generate_config)
 - evaluation (6 metrics including validity, novelty, uniqueness, synthesizability, similarity and diversity)
 
-### Pretrained models
+## Demo
+The demos are shown in ```minGPT_pipeline.ipynb```, ```diffusion1D_pipeline.ipynb```, ```diffusionLM_pipeline.ipynb```
+### minGPT & diffusion1D
+- For ```minGPT_pipeline.ipynb```, ```diffusion1D_pipeline.ipynb```, all the steps in pipeline can be executed in the notebook.
+### diffusionLM
+- For ```diffusionLM_pipeline.ipynb```, the notebook generates the the bash scripts for training and generation. The scripts will be stored under ```diffusionLM/improved-diffusion```.
+To run the training:
+```
+cd diffusionLM/improved-diffusion
+bash train_conditional.sh or bash train_unconditional.sh
+The model checkpoints will be stored in ```diffusionLM/improved-diffusion/diffusion_models```
+```
+To run the generation:
+```
+cd diffusionLM/improved-diffusion
+bash generate_conditional.sh or bash generate_unconditional.sh
+```
+The generated output will be stored in ```diffusionLM/improved-diffusion/generation_outputs```
+
+## Pretrained models
 #### minGPT
 The checkpoints of pretrained model at different epochs can be obtained here: https://drive.google.com/drive/folders/1ZJqPNkrWhRFkrXDZ85G-4xKUsxjildlH?usp=sharing. Please put the checkpoints files under ```diffusion1D/ckpts/```. 
 
