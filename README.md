@@ -34,7 +34,8 @@ pip install -e diffusionLM/improved-diffusion/
 pip install -e diffusionLM/transformers/
 pip install spacy==3.2.6
 pip install datasets==2.0.0 
-pip install huggingface_hub wandb deepchem torchsummary
+pip install huggingface_hub==0.16.4
+ wandb deepchem torchsummary
 ```
 ### Dataset
 Prepare the data used for training in .csv file with two columns, the separation marker is ```"\t"```
