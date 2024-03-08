@@ -1,0 +1,1 @@
+python scripts/batch_decode.py diffusion_models/diff_roc_pad_rand16_transformer_lr0.0001_0.0_2000_sqrt_Lsimple_h128_s2_d0.1_sd101_xstart_e2e_unconditional -1.0 ema 030000
