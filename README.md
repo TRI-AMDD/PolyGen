@@ -55,9 +55,9 @@ Prepare the data used for training in .csv file with two columns, the separation
 
 ## Demo
 The demos are shown in ```minGPT_pipeline.ipynb```, ```diffusion1D_pipeline.ipynb```, ```diffusionLM_pipeline.ipynb```
-### minGPT & diffusion1D
+#### minGPT & diffusion1D
 - For ```minGPT_pipeline.ipynb```, ```diffusion1D_pipeline.ipynb```, all the steps in pipeline can be executed in the notebook.
-### diffusionLM
+#### diffusionLM
 - For ```diffusionLM_pipeline.ipynb```, the notebook generates the the bash scripts for training and generation. The scripts will be stored under ```diffusionLM/improved-diffusion```.
 To run the training:
 ```
