@@ -1,0 +1,255 @@
+# Variables that can be tweaked
+echo both
+########################################
+variable 		nions 		equal 100
+
+variable        boxscale    equal 1.4411
+
+variable 		tlo 		equal 353
+variable 		thi 		equal 453
+
+variable 		plo 		equal 1.0
+variable 		pmi 		equal 1000.0
+variable 		phi 		equal 4000.0
+
+variable 		eqfactor 	equal 1
+########################################
+
+units			real
+boundary		p p p
+atom_style		full
+
+pair_style		lj/class2/coul/long 9.5
+kspace_style	pppm 0.0001
+pair_modify     mix sixthpower
+pair_modify		tail yes
+bond_style		class2
+angle_style		class2
+dihedral_style	class2
+improper_style	class2
+
+read_data 		system.lmp
+
+neighbor		3.0 bin
+neigh_modify	delay 0 every 1 check yes
+
+variable		sysvol		equal vol
+variable		sysmass		equal mass(all)/6.0221367e+23
+variable		sysdensity	equal v_sysmass/v_sysvol/1.0e-24
+variable		time		equal step*dt+0.000001
+variable		cella		equal lx
+variable		etotal		equal etotal
+variable		pe 			equal pe
+variable		ke 			equal ke
+
+variable 		tdamp 		equal floor(100*dt)
+variable 		pdamp 		equal floor(1000*dt)
+
+variable 		nave 		equal floor(v_eqfactor*500*1e3/dt)
+variable 		dnave		equal v_nave-1
+variable 		nskip		equal floor(v_eqfactor*200*1e3/dt)
+
+timestep 		2.0
+run_style 		respa 2 4
+
+# Include ion FF parameters
+
+include 		./ion_parameters/Li.params
+include 		./ion_parameters/TFSI.params
+
+# Define molecular templates
+
+molecule 		anion ./molecular_templates/TFSI.lammps
+molecule 		cation   ./molecular_templates/Li.lammps
+
+special_bonds	lj/coul 0.0 0.0 1.0
+
+thermo_style	custom step press pe etotal
+thermo_modify	flush yes
+thermo 			10
+
+# Change box size
+change_box all x scale ${boxscale} y scale ${boxscale} z scale ${boxscale} remap 
+
+minimize   1e-6 1e-6 1000 1000
+
+# Insert n cations and anions
+
+region 			mybox block EDGE EDGE EDGE EDGE EDGE EDGE
+fix 			addanions all deposit ${nions} 0 1 46783 region mybox near 1.0 mol anion
+variable 		nsteps 		equal floor(v_nions*100)
+run 			${nsteps}
+unfix 			addanions
+fix 			addcations all deposit ${nions} 0 1 42783 region mybox near 1.0 mol cation
+run 			${nsteps}
+unfix 			addcations
+
+
+# Define groups based on atom types. 
+group           ions        type > 89
+group           poly        subtract all ions
+
+#
+# Equilibration procedure reported in 10.1021/acs.chemmater.8b01955
+#
+
+# 1. Energy minimization
+thermo_style	custom step fmax fnorm press pe etotal
+thermo 			10
+minimize 		0.0 1.0e-6 1000 10000
+
+# Set a smaller timestep for stability
+timestep 		0.5
+kspace_modify   compute no
+
+# Initialize velocities
+velocity     	all create ${tlo} 520419 dist gaussian mom yes rot yes
+
+# 1.5 nVT 50 ps
+thermo_style    custom step v_time press temp pe ke etotal
+thermo          10000
+fix             1 all nvt temp ${tlo} ${tlo} ${tdamp}
+variable        nsteps      equal floor(v_eqfactor*50*1e3/dt)
+run             ${nsteps}
+unfix           1
+
+# 2. npT (compression) 100 ps
+thermo_style	custom step v_time press vol v_sysdensity temp pe ke etotal
+thermo 			10000
+fix				1 all npt temp ${tlo} ${tlo} ${tdamp} iso ${plo} ${pmi} ${pdamp} drag 0 mtk yes nreset 20000
+variable 		nsteps 		equal floor(v_eqfactor*100*1e3/dt)
+run 			${nsteps}
+unfix 			1
+
+kspace_modify   compute yes
+
+# 3. Energy minimization
+thermo_style	custom step fmax fnorm press pe etotal
+thermo 			10
+minimize 		0.0 1.0e-6 1000 10000
+
+# Return to normal timestep
+timestep 		2.0
+reset_timestep 	0
+
+# Initialize velocities
+velocity     	all create ${tlo} 63862 dist gaussian mom yes rot yes
+
+# 4. npT (compression) 500 ps
+thermo_style	custom step v_time press vol v_sysdensity temp pe ke etotal
+thermo 			10000
+fix				1 all npt temp ${tlo} ${tlo} ${tdamp} iso ${plo} ${phi} ${pdamp} drag 0 mtk yes nreset 20000
+variable 		nsteps 		equal floor(v_eqfactor*500*1e3/dt)
+run 			${nsteps}
+unfix 			1
+
+# 5. npT 400 ps
+thermo_style	custom step v_time press vol v_sysdensity temp pe ke etotal
+thermo 			10000
+fix				1 all npt temp ${tlo} ${tlo} ${tdamp} iso ${phi} ${phi} ${pdamp} drag 0 mtk yes nreset 20000
+variable 		nsteps 		equal floor(v_eqfactor*400*1e3/dt)
+run 			${nsteps}
+unfix 			1
+
+# 6. npT (decompression) 600 ps
+thermo_style	custom step v_time press vol v_sysdensity temp pe ke etotal
+thermo 			10000
+fix				1 all npt temp ${tlo} ${tlo} ${tdamp} iso ${phi} ${plo} ${pdamp} drag 0 mtk yes nreset 20000
+variable 		nsteps 		equal floor(v_eqfactor*600*1e3/dt)
+run 			${nsteps}
+unfix 			1
+
+# 7. npT (heating) 400 ps
+thermo_style	custom step v_time press vol v_sysdensity temp pe ke etotal
+thermo 			10000
+fix				1 all npt temp ${tlo} ${thi} ${tdamp} iso ${plo} ${plo} ${pdamp} drag 0 mtk yes nreset 20000
+variable 		nsteps 		equal floor(v_eqfactor*400*1e3/dt)
+run 			${nsteps}
+unfix 			1
+
+# 8. npT (cooling) 400 ps
+thermo_style	custom step v_time press vol v_sysdensity temp pe ke etotal
+thermo 			10000
+fix				1 all npt temp ${thi} ${tlo} ${tdamp} iso ${plo} ${plo} ${pdamp} drag 0 mtk yes nreset 20000
+variable 		nsteps 		equal floor(v_eqfactor*400*1e3/dt)
+run 			${nsteps}
+unfix 			1
+
+# 9. npT (compression) 300 ps
+thermo_style	custom step v_time press vol v_sysdensity temp pe ke etotal
+thermo 			10000
+fix				1 all npt temp ${tlo} ${tlo} ${tdamp} iso ${plo} ${phi} ${pdamp} drag 0 mtk yes nreset 20000
+variable 		nsteps 		equal floor(v_eqfactor*300*1e3/dt)
+run 			${nsteps}
+unfix 			1
+
+# 10. npT (decompression) 300 ps
+thermo_style	custom step v_time press vol v_sysdensity temp pe ke etotal
+thermo 			10000
+fix				1 all npt temp ${tlo} ${tlo} ${tdamp} iso ${phi} ${plo} ${pdamp} drag 0 mtk yes nreset 20000
+variable 		nsteps 		equal floor(v_eqfactor*300*1e3/dt)
+run 			${nsteps}
+unfix 			1
+
+# 11. nVT 800 ps
+thermo_style	custom step v_time press temp pe ke etotal
+thermo 			10000
+fix				1 all nvt temp ${tlo} ${tlo} ${tdamp}
+variable 		nsteps 		equal floor(v_eqfactor*800*1e3/dt)
+run 			${nsteps}
+unfix 			1
+
+# 12. npT 1200 ps
+thermo_style	custom step v_time press vol v_sysdensity temp pe ke etotal
+thermo 			10000
+fix				1 all npt temp ${tlo} ${tlo} ${tdamp} iso ${plo} ${plo} ${pdamp} drag 0 mtk yes nreset 20000
+fix				2 all ave/time 500      1      500 v_time c_thermo_temp c_thermo_press v_sysvol &
+							 v_sysdensity v_pe v_ke v_etotal &
+							 file npT_instantaneous.txt off 1
+fix				3 all ave/time 1    49999    50000 v_time c_thermo_temp c_thermo_press v_sysvol &
+							 v_sysdensity v_pe v_ke v_etotal &
+							 file npT_averages.txt off 1
+fix 			4 all ave/time 1 ${dnave} ${nave} v_cella start ${nskip}
+variable 		nsteps 		equal floor(v_eqfactor*1200*1e3/dt)
+run 			${nsteps}
+unfix 			1
+unfix 			2
+unfix 			3
+
+variable 		av 			equal f_4
+
+print 			'The equilibrium cell parameter is ${av} Ang. '
+
+# Change the box dimensions according to the equilibrium cell parameter
+
+change_box 		all x final 0.0 ${av} y final 0.0 ${av} z final 0.0 ${av} remap units box
+
+unfix 			4
+
+# 13. nVT 1000 ps - not included in 10.1021/acs.chemmater.8b0195
+# but useful to accomodate new fixed volume
+thermo_style	custom step v_time press temp pe ke etotal
+thermo 			10000
+fix				1 all nvt temp ${tlo} ${tlo} ${tdamp}
+fix				2 all ave/time 500      1      500 v_time c_thermo_temp c_thermo_press &
+							 v_pe v_ke v_etotal &
+							 file nVT_instantaneous.txt off 1
+fix				3 all ave/time 1    49999    50000 v_time c_thermo_temp c_thermo_press &
+							 v_pe v_ke v_etotal &
+							 file nVT_averages.txt off 1
+# Define chunks for polymer chains. 
+compute     cc_p    poly chunk/atom molecule compress yes
+# Compute the radius of gyration for all polymer chains. 
+compute     rg_p    poly gyration/chunk cc_p
+# Output the data, for each polymer chain, every 100 timesteps. 
+fix         rgout   poly ave/time 100 1 100 c_rg_p file radgyr.txt mode vector
+
+variable 		nsteps 		equal floor(v_eqfactor*1000*1e3/dt)
+run 			${nsteps}
+unfix 			1
+unfix 			2
+unfix 			3
+unfix           rgout
+
+write_restart 	relaxed.restart
+write_data 		relaxed.lmp

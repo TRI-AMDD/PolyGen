@@ -1,0 +1,108 @@
+########################################
+variable        tlo         equal 353
+
+variable        eqfactor    equal 10
+#######################################
+
+units           real
+boundary        p p p
+atom_style      full
+
+pair_style      lj/class2/coul/long 9.5
+kspace_style    pppm 0.0001
+pair_modify     mix sixthpower
+pair_modify     tail yes
+bond_style      class2
+angle_style     class2
+dihedral_style  class2
+improper_style  class2
+
+
+# Read the previous restart file
+read_restart   relaxed.restart
+
+neighbor        3.0 bin
+neigh_modify    delay 0 every 1 check yes
+
+
+variable        sysvol      equal vol
+variable        sysmass     equal mass(all)/6.0221367e+23
+variable        sysdensity  equal v_sysmass/v_sysvol/1.0e-24
+variable        time        equal step*dt+0.000001
+variable        cella       equal lx
+variable        etotal      equal etotal
+variable        pe          equal pe
+variable        ke          equal ke
+
+variable        tdamp       equal floor(100*dt)
+variable        pdamp       equal floor(1000*dt)
+
+variable        nave        equal floor(v_eqfactor*500*1e3/dt)
+variable        dnave       equal v_nave-1
+variable        nskip       equal floor(v_eqfactor*200*1e3/dt)
+
+timestep        2.0
+run_style       respa 2 4
+
+special_bonds   lj/coul 0.0 0.0 1.0
+
+
+# Run nVT MD
+
+reset_timestep  0
+
+thermo_style    custom step v_time press temp pe ke etotal
+thermo          10000
+fix             1 all nvt temp ${tlo} ${tlo} ${tdamp}
+fix             2 all ave/time 500      1      500 v_time c_thermo_temp c_thermo_press &
+                             v_pe v_ke v_etotal &
+                             file nVT_instantaneous.txt off 1
+fix             3 all ave/time 1    49999    50000 v_time c_thermo_temp c_thermo_press &
+                             v_pe v_ke v_etotal &
+                             file nVT_averages.txt off 1
+
+dump            1 all custom 1000 traj.lammpstrj id mol type mass q x y z ix iy iz
+dump_modify     1 sort id
+
+restart         50000 nvt.restart
+
+variable        nsteps      equal floor(v_eqfactor*1000*1e3/dt)
+run             ${nsteps}
+unfix           1
+unfix           2
+unfix           3
+undump          1
+
+# Write restart file for another run
+write_restart   final.restart
+
+
+# Compute clusters
+
+# The LAMMPS lines which allow to compute
+# cluster populations during an MD run
+
+# Define two groups: 'cation_neg', with cation and negatively charged atoms in anion (e.g., O(TFSI))
+# and 'cation_neg_core', with cation, negatively charged atoms in anion and core of anion that connect the
+# (e.g., Li and O,S,N(TFSI))
+group           cation_neg         type 90 94
+group           cation_neg_core      type 90 94 95 93
+
+
+# The cluster existence condition here is distance-based.
+# d <= 3.4 Ang based on the g(r)
+
+# Compute the clusters using the 'cation_neg_core' group which includes cation, negatively charged atoms in anion and
+# core of anion (e.g., TFSI- atoms O, N, and S. forms a anion), allowing LAMMPS to
+# discriminate between mutiple negatively charged atoms (such as O's in TFSI) from the same anion or from
+# different anions
+
+compute         cc2         cation_neg_core aggregate/atom 3.4
+
+# Dump using the 'cation_neg' group, here every 10000 timesteps
+
+dump            aggregates  cation_neg custom 1000 aggregates.txt id type c_cc2 mol
+dump_modify     aggregates  sort id
+
+
+rerun           traj.lammpstrj dump x y z ix iy iz
