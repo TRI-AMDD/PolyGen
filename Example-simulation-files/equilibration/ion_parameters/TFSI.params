@@ -1,0 +1,64 @@
+bond_coeff 91 1.35 403.03 0 0 # c f       
+bond_coeff 92 1.795 257.33 0 0 # c_ s'_       
+bond_coeff 93 1.4308 743.76 0 0 # o= s'       
+bond_coeff 94 1.5944 205.78 0 0 # n2-_ s'_       
+angle_coeff 91 109.1 71.97 0 0 # f c f      
+angle_coeff 92 109.5 60 0 0 # * c_ *      
+angle_coeff 93 109.5 50 0 0 # * s_ *      
+angle_coeff 94 109.5 50 0 0 # * s_ *      
+angle_coeff 95 119.33 135 0 0 # o- s' o-      
+angle_coeff 96 109.5 50 0 0 # * s_ *      
+angle_coeff 97 120 50 0 0 # * n_ *      
+dihedral_coeff 91 0 0 0 0 0.1367 0 # * c_ s_ *   
+dihedral_coeff 92 0 0 0 0 0.1367 0 # * c_ s_ *   
+dihedral_coeff 93 0 0 0.5 0 0 0 # * n_ s_ *   
+dihedral_coeff 94 0 0 0.5 0 0 0 # * n_ s_ *   
+improper_coeff 91 0 0 # ff c0x ff ff       
+improper_coeff 92 0 0 # ff c0x ff s'       
+improper_coeff 93 0 0 # * s_ * *       
+improper_coeff 94 0 0 # * s_ * *       
+improper_coeff 95 0 0 # * s_ * *       
+angle_coeff 91 bb 0 1.35 1.35 # f c f      
+angle_coeff 92 bb 0 1.35 1.795 # * c_ *      
+angle_coeff 93 bb 0 1.795 1.4308 # * s_ *      
+angle_coeff 94 bb 0 1.795 1.5944 # * s_ *      
+angle_coeff 95 bb 0 1.4308 1.4308 # o- s' o-      
+angle_coeff 96 bb 0 1.5944 1.4308 # * s_ *      
+angle_coeff 97 bb 0 1.5944 1.5944 # * n_ *      
+angle_coeff 91 ba 0 0 1.35 1.35 # f c f     
+angle_coeff 92 ba 0 0 1.35 1.795 # * c_ *     
+angle_coeff 93 ba 0 0 1.795 1.4308 # * s_ *     
+angle_coeff 94 ba 0 0 1.795 1.5944 # * s_ *     
+angle_coeff 95 ba 0 0 1.4308 1.4308 # o- s' o-     
+angle_coeff 96 ba 0 0 1.5944 1.4308 # * s_ *     
+angle_coeff 97 ba 0 0 1.5944 1.5944 # * n_ *     
+dihedral_coeff 91 mbt 0 0 0 1.795 # * c_ s_ *    
+dihedral_coeff 92 mbt 0 0 0 1.795 # * c_ s_ *    
+dihedral_coeff 93 mbt 0 0 0 1.5944 # * n_ s_ *    
+dihedral_coeff 94 mbt 0 0 0 1.5944 # * n_ s_ *    
+dihedral_coeff 91 ebt 0 0 0 0 0 0 1.35 1.4308 # * c_ s_ *
+dihedral_coeff 92 ebt 0 0 0 0 0 0 1.35 1.5944 # * c_ s_ *
+dihedral_coeff 93 ebt 0 0 0 0 0 0 1.5944 1.795 # * n_ s_ *
+dihedral_coeff 94 ebt 0 0 0 0 0 0 1.5944 1.4308 # * n_ s_ *
+dihedral_coeff 91 at 0 0 0 0 0 0 109.5 109.5 # * c_ s_ *
+dihedral_coeff 92 at 0 0 0 0 0 0 109.5 109.5 # * c_ s_ *
+dihedral_coeff 93 at 0 0 0 0 0 0 120 109.5 # * n_ s_ *
+dihedral_coeff 94 at 0 0 0 0 0 0 120 109.5 # * n_ s_ *
+dihedral_coeff 91 aat 0 109.5 109.5 # * c_ s_ *     
+dihedral_coeff 92 aat 0 109.5 109.5 # * c_ s_ *     
+dihedral_coeff 93 aat 0 120 109.5 # * n_ s_ *     
+dihedral_coeff 94 aat 0 120 109.5 # * n_ s_ *     
+dihedral_coeff 91 bb13 0 1.35 1.4308 # * c_ s_ *     
+dihedral_coeff 92 bb13 0 1.35 1.5944 # * c_ s_ *     
+dihedral_coeff 93 bb13 0 1.5944 1.795 # * n_ s_ *     
+dihedral_coeff 94 bb13 0 1.5944 1.4308 # * n_ s_ *     
+improper_coeff 91 aa 0 0 0 120 120 120 # ff c0x ff ff  
+improper_coeff 92 aa 0 0 0 120 120 120 # ff c0x ff s'  
+improper_coeff 93 aa 0 0 0 120 120 120 # * s_ * *  
+improper_coeff 94 aa 0 0 0 120 120 120 # * s_ * *  
+improper_coeff 95 aa 0 0 0 120 120 120 # * s_ * *  
+pair_coeff 91 91 0.04 3.75 # c0x -        
+pair_coeff 92 92 0.0488 3.421 # ff -        
+pair_coeff 93 93 0.1643 3.89 # n2- -        
+pair_coeff 94 94 0.2029 3.5432 # o= -        
+pair_coeff 95 95 0.25 4.027 # s' -        
