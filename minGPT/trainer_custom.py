@@ -8,7 +8,7 @@ from collections import defaultdict
 
 import torch
 from torch.utils.data.dataloader import DataLoader
-from mingpt.utils import CfgNode as CN
+from minGPT.model.mingpt.utils import CfgNode as CN
 
 class Trainer:
 
