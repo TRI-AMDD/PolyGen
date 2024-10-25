@@ -13,7 +13,7 @@ from deepchem.feat.smiles_tokenizer import SmilesTokenizer
 import sys
 from io import StringIO
 import math
-import os.path as op
+import os
 import pickle
 from collections import defaultdict
 

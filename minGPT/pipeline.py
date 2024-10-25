@@ -5,12 +5,15 @@ import torch
 from rdkit import Chem
 
 from deepchem.feat.smiles_tokenizer import SmilesTokenizer
-from mingpt.model import GPT
-from mingpt.utils import CfgNode as CN
+from minGPT.model.mingpt.model import GPT
+from minGPT.model.mingpt.utils import CfgNode as CN
 from sklearn.model_selection import train_test_split
 from minGPT.trainer_custom import Trainer
-from minGPT.metrics import *
-from minGPT.dataset import *
+from minGPT.metrics import check_novelty, validate_mol, has_two_ends, calculateScore, calculate_morgan_fingerprint, calculate_diversity
+from minGPT.dataset import SmilesDataset
+
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
 
 class minGPT():
     
@@ -128,10 +131,10 @@ class minGPT():
     def generate(self, generate_config):
         self.num_samples = generate_config.num_samples
         if generate_config.ckpt_path:
-            ckpt = torch.load(generate_config.ckpt_path)#, map_location=torch.device('cpu'))
+            ckpt = torch.load(generate_config.ckpt_path, map_location=torch.device(device))
             self.model.load_state_dict(ckpt)
         
-        self.model.to(self.device)
+        self.model.to(device)
         if generate_config.task == "unconditional":
             prompt = torch.randint(0, 10, size=(self.num_samples, self.length)).to(self.device)
         
@@ -139,7 +142,7 @@ class minGPT():
             target_property_value = 9
             target_input = np.array([target_property_value for i in range(self.length)])
             target_input = np.tile(target_input, (self.num_samples,1))
-            prompt = torch.tensor(target_input).to(self.device)
+            prompt = torch.tensor(target_input).to(device)
         
 
         y = self.model.generate(prompt, max_new_tokens=self.block_size, temperature=generate_config.temperature, do_sample=True, top_k=40)[:, 1:]   
