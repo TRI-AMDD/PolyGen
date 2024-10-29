@@ -15,7 +15,7 @@ from IPython.display import Image, display
 import sys
 from torch.utils.data import Dataset, DataLoader
 from sklearn.model_selection import train_test_split
-from rdkit.DataStructs import TanimotoSimilarity
+
 
 
 class diffusion1D():
