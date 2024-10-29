@@ -113,15 +113,17 @@ def has_two_ends(df):
     return df
 
 
-
-### Functions for SA score calculation
 def readFragmentScores(name='fpscores'):
-    import gzip
     global _fscores
-    # generate the full path filename:
+
+    # Generate the full path filename
     if name == "fpscores":
+        json_file_path = os.path.join(os.path.dirname(__file__), "fpscores.json")
         
-        data = pickle.load(gzip.open(os.path.join(os.path.dirname(__file__), "fpscores.pkl.gz")))
+        # Load JSON data
+        with open(json_file_path, 'r') as f:
+            data = json.load(f)
+
     outDict = {}
     for i in data:
         for j in range(1, len(i)):

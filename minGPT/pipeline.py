@@ -11,6 +11,7 @@ from sklearn.model_selection import train_test_split
 from minGPT.trainer_custom import Trainer
 from minGPT.metrics import check_novelty, validate_mol, has_two_ends, calculateScore, calculate_morgan_fingerprint, calculate_diversity
 from minGPT.dataset import SmilesDataset
+from rdkit.DataStructs import TanimotoSimilarity
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 

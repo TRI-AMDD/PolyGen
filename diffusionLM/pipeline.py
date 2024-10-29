@@ -5,6 +5,7 @@ import sys
 from improved_diffusion.config_utils import CfgNode as CN
 from improved_diffusion.config_utils import token2smiles
 from diffusionLM.metrics import *
+from rdkit.DataStructs import TanimotoSimilarity
 
 class diffusionLM():
     
