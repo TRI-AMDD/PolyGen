@@ -92,7 +92,7 @@ class minGPT():
         self.model = GPT(model_config)
         self.block_size = model_config.block_size
         self.vocab_size = model_config.vocab_size
-        self.device = "cuda"
+        self.device = "auto"
 
     
     def data_preprocessing(self, data_config):
