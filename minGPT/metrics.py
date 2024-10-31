@@ -15,6 +15,7 @@ from io import StringIO
 import math
 import os
 import pickle
+import json
 from collections import defaultdict
 
 from rdkit import Chem
