@@ -3,4 +3,4 @@ deepchem==2.8.0
 transformers==4.46.0
 ipykernel==6.29.5
 torch==2.0.1
-notebook==6.5.4
+notebook==7.2.2
