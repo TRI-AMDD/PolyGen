@@ -28,5 +28,5 @@ jobs:
 
       - name: Run tests
         run: |
-          python -m unittest discover -s <path_to_tests_directory> -p "*.py"
+          python -m unittest discover -s minGPT/tests -p "*.py"
 
