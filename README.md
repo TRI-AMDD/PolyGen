@@ -2,6 +2,7 @@
 ![Generated polymer electrolyte](https://github.com/TRI-AMDD/PolyGen/blob/main/molecule_grid.png)
 
 ## Installation
+### the following installation steps have been tested on macOS 14.6.1 with M1 Max chip
 #### minGPT
 Python version: 3.8
 
