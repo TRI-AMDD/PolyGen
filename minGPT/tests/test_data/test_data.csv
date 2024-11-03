@@ -1,0 +1,16 @@
+mol_smiles	conductivity
+NC(=O)CSCC(CO[Cu])OC(=O)[Au]	1
+CCC(F)C(=O)NC(CO[Cu])COC(=O)[Au]	0
+CCSCCN(CCN[Cu])CCOC(=O)[Au]	1
+C#CCN(CCOCCO[Cu])CCOC(=O)[Au]	1
+CCC(COC(=O)[Au])C(=O)NCCO[Cu]	0
+CC(CCOC(=O)[Au])SCCO[Cu]	1
+CN(CCNC(=O)COC(=O)[Au])CCO[Cu]	1
+CN(CCO[Cu])C(=O)CCOC(=O)[Au]	1
+CCC(C)C(NC(=O)[Au])C(=O)NC(C)CN[Cu]	0
+CCS(C)(=O)=NC(=O)C(CN[Cu])OC(=O)[Au]	0
+C=CC(CNCCCOCCOC(=O)[Au])O[Cu]	1
+CCC(=O)CNC(=O)C(CN[Cu])OC(=O)[Au]	0
+CC(CCO[Cu])N(C)CCCCCOC(=O)[Au]	1
+CC(C)CNC(CO[Cu])COC(=O)[Au]	0
+NC(=O)CCC(=O)NCC(CO[Cu])OC(=O)[Au]	1
