@@ -123,6 +123,8 @@ https://github.com/karpathy/minGPT
 https://github.com/lucidrains/denoising-diffusion-pytorch
 https://github.com/XiangLi1999/Diffusion-LM
 ```
+In this work, we copied the minGPT model from the original repository by Karpathy at https://github.com/karpathy/minGPT at commit 37baab7 (Jan 8, 2023). This unchanged copy is saved in https://github.com/TRI-AMDD/PolyGen/tree/main/minGPT/model. 
+
 ## Citation
 If you use PolyGen, please cite the following:
 
